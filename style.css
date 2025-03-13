@@ -1,0 +1,159 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Basic body styling */
+  body {
+    background-color: #000; /* Main background: black */
+    font-family: "Tangerine", cursive;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    overflow: hidden; /* Prevent scrolling during door animation */
+  }
+  
+  /* Door container covers the entire viewport */
+  #door-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  /* Styling for the door halves */
+  .door {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #ffb7b7; /* Dark red */
+    border: 0.5px solid #ffdadf; /* Light pink border */
+    transition: transform 1s ease-in-out;
+  }
+  
+  /* Left door positioned on the left side with its transform origin set to the left edge */
+  .door-left {
+    left: 0;
+    transform-origin: left center;
+  }
+  
+  /* Right door positioned on the right side with its transform origin set to the right edge */
+  .door-right {
+    right: 0;
+    transform-origin: right center;
+  }
+  
+  /* Centered message on the door */
+  #door-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none; /* Allows clicks to pass through */
+    color: #a23434; /* Light pink text */
+  }
+  
+  #door-message h1 {
+    font-size: 5em;
+    margin-bottom: 0.5em;
+  }
+  #door-message p {
+    font-family: "Birthstone", cursive;
+    font-size: 2.2em;
+    margin-top: 0.5em;
+  }
+  
+  /* Style for the rose image */
+  .rose-img {
+    width: 100px;
+    margin-bottom: 20px;
+
+  }
+  
+  /* Video container styling; hidden initially */
+  #video-container {
+    width: 100%;
+    height: 100vh;
+    display: none; /* Revealed after door animation */
+    background-color: #000;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+  #video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maximizes video size while preserving aspect ratio */
+  }
+  
+  /* When door container gets the 'open' class, animate door halves */
+  .open .door-left {
+    transform: rotateY(-90deg);
+  }
+  
+  .open .door-right {
+    transform: rotateY(90deg);
+  }
+  
+  /* Fade out the door message upon opening */
+  .open #door-message {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .open .colored-heart {
+    filter: brightness(0.85) saturate(0.85) hue-rotate(5deg);
+  }
+  
+  .hide-bg{
+    max-width: 80px;
+  }
+
+
+/* ---- Heart Drop Effect ---- */
+.heart {
+  position: absolute;
+  pointer-events: none;
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  user-select: none;
+  animation: heartDrop 1s ease forwards;
+  z-index: 1000; /* Ensure it appears above everything */
+
+}
+
+@keyframes heartDrop {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -50px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.colored-heart {
+  filter: brightness(0.85) saturate(0.85) hue-rotate(5deg);
+}
+
+
+
+/* ---- Credits Container ---- */
+#credits {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  color: #a23434; /* Light pink text */
+  font-family: "Birthstone", cursive;
+  font-size: 1.8rem;
+  text-align: right;
+  z-index: 20;
+}
