@@ -2,14 +2,28 @@ document.addEventListener('DOMContentLoaded', function() {
     var doorContainer = document.getElementById('door-container');
     var videoContainer = document.getElementById('video-container');
     var credits = document.getElementById('credits');
+    var audio = document.getElementById('overlay-audio');
+    var playMusicBtn = document.getElementById('play-music-btn');
 
+    playMusicBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playMusicBtn.textContent = "⏸ Pause Music";
+        } else {
+            audio.pause();
+            playMusicBtn.textContent = "🎵 Play Music";
+        }
+    });
   
     doorContainer.addEventListener('click', function() {
       // Add the 'open' class to trigger the door opening animation.
+      audio.pause();
+      audio.currentTime = 0; // Reset audio position
+      playMusicBtn.style.display = 'none'; // Hide button when overlay disappears
       doorContainer.classList.add('open');
       credits.style.opacity = '0'; 
 
-  
+
       // After the transition (1s), hide the door container and show the video container.
       setTimeout(function() {
         doorContainer.style.display = 'none';

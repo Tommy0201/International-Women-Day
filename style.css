@@ -157,3 +157,23 @@
   text-align: right;
   z-index: 20;
 }
+
+
+#play-music-btn {
+  color: #f78383;
+  background-color: #a23434; /* Light pink text */
+  border: none;
+  padding: 2px 8px;
+  font-family: "Birthstone", cursive;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 10px;
+  transition: 0.3s;
+  z-index: 1000000;
+}
+
+#play-music-btn:hover {
+  background-color: darkred;
+}
